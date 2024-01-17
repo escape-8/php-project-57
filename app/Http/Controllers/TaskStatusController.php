@@ -37,7 +37,7 @@ class TaskStatusController extends Controller
 
         $taskStatus = new TaskStatus($data);
         $taskStatus->save();
-        flash(__('messages.create_task_status'))->success();
+        flash(__('messages.task_status.create'))->success();
         return redirect()->route('task_statuses.index');
     }
 
@@ -69,7 +69,7 @@ class TaskStatusController extends Controller
         ]);
         $status->fill($data);
         $status->save();
-        flash(__('messages.update_task_status'))->success();
+        flash(__('messages.task_status.update'))->success();
         return redirect()->route('task_statuses.index');
     }
 
@@ -80,7 +80,7 @@ class TaskStatusController extends Controller
     {
         $status = TaskStatus::findOrFail($id);
         $status->delete();
-        flash('Статус успешно удалён')->success();
+        flash(__('messages.task_status.delete'))->success();
         return redirect()->route('task_statuses.index');
     }
 }
