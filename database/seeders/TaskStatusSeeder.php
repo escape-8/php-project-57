@@ -13,9 +13,7 @@ class TaskStatusSeeder extends Seeder
      */
     public function run(): void
     {
-        TaskStatus::create(['name' => 'новый']);
-        TaskStatus::create(['name' => 'в работе']);
-        TaskStatus::create(['name' => 'на тестировании']);
-        TaskStatus::create(['name' => 'завершен']);
+        $statuses = ['новый', 'в работе', 'на тестировании', 'завершен'];
+        TaskStatus::factory()->withStatuses($statuses);
     }
 }
