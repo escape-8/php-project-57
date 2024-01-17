@@ -34,7 +34,7 @@
                             <td>{{ $status->created_at }}</td>
                         @auth
                             <td>
-                                <a data-method="delete" data-confirm="Вы уверены?" rel="nofollow"
+                                <a data-method="delete" data-confirm="@lang('views.delete_confirm')" rel="nofollow"
                                    class="text-red-600 hover:text-red-900"
                                    href="{{ route('task_statuses.destroy', $status->id) }}">
                                     @lang('views.task_statuses.index.buttons.delete')
