@@ -42,4 +42,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function tasks()
+    {
+        return $this->hasMany(__NAMESPACE__ . '\Task', 'created_by_id');
+    }
+
+    public function assignments()
+    {
+        return $this->hasMany(__NAMESPACE__ . '\Task', 'assigned_to_id');
+    }
 }
