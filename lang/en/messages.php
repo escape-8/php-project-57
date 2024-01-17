@@ -1,7 +1,15 @@
 <?php
 
 return [
-    'create_task_status' => 'Status successfully created',
-    'update_task_status' => 'Status changed successfully',
-    'delete_task_status' => 'Status successfully deleted'
+    'task_status' => [
+        'create' => 'Status successfully created',
+        'update' => 'Status changed successfully',
+        'delete' => 'Status successfully deleted',
+        'error_delete' => 'Failed to delete status'
+    ],
+    'task' => [
+        'create' => 'Task created successfully',
+        'update' => 'The task was successfully modified',
+        'delete' => 'The task was successfully deleted'
+    ]
 ];
