@@ -20,4 +20,13 @@ class TaskStatusFactory extends Factory
             //
         ];
     }
+
+    public function withStatuses(array $statuses)
+    {
+        foreach ($statuses as $status) {
+            $this->state(['name' => $status])->create();
+        }
+
+        return $this;
+    }
 }
