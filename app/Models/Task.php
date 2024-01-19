@@ -24,4 +24,9 @@ class Task extends Model
     {
         return $this->belongsTo(__NAMESPACE__ . '\User', 'assigned_to_id');
     }
+
+    public function labels()
+    {
+        return $this->belongsToMany(__NAMESPACE__ . '\Label', 'task_label', 'task_id', 'label_id');
+    }
 }
