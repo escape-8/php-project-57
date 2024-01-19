@@ -31,7 +31,7 @@
                         <tr class="border-b border-dashed text-left">
                             <td>{{ $status->id }}</td>
                             <td>{{ $status->name }}</td>
-                            <td>{{ $status->created_at }}</td>
+                            <td>{{ $status->created_at->format('d.m.Y') }}</td>
                         @auth
                             <td>
                                 <a data-method="delete" data-confirm="@lang('views.delete_confirm')" rel="nofollow"
