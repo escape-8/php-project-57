@@ -44,10 +44,8 @@
         <label for="labels">@lang('views.task.form.labels')</label>
     </div>
     <div>
-        <select multiple="multiple" name="labels[]" class="rounded border-gray-300 w-1/3 h-32" id="labels">
-            <option selected="selected" value=""></option>
-            <option value="1">ошибка</option>
-            <option value="2">документация</option>
-            <option value="3">дубликат</option>
-            <option value="4">доработка</option></select>
+        {{ form::select('labels[]', ['' => ''] + $labels->pluck('name', 'id')->toArray(),
+                        $task->labels->pluck('id')->toArray() ?? '',
+                        ['class' => 'rounded border-gray-300 w-1/3 h-32', 'id' => 'labels', 'multiple' => 'multiple']
+        ) }}
     </div>
