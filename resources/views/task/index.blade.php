@@ -11,7 +11,6 @@
                         {{ Form::open(['url' => route('tasks.index'), 'method' => 'GET']) }}
                             <div class="flex">
                                 <div>
-{{--                                    {{ dump($filter['status_id']) }}--}}
                                     {{ Form::select('filter[status_id]',
                                       [null => __('views.task.index.status')] + $statuses->pluck('name', 'id')->toArray(),
                                       $filter['status_id'] ?? null,
