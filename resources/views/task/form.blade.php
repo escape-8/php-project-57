@@ -12,19 +12,17 @@
         {{ Form::label('name', __('views.task.form.name')) }}
     </div>
     <div class="mt-2">
-        {{ Form::text('name', $task->name ?? null, ['class' => 'rounded border-gray-300 w-1/3',
-                                      'id' => 'name'
-                                      ]) }}
+        {{ Form::text('name', $task->name ?? null, ['class' => 'rounded border-gray-300 w-1/3', 'id' => 'name']) }}
     </div>
     <div class="mt-2">
         {{ Form::label('description', __('views.task.form.description')) }}
     </div>
     <div>
         {{ Form::textarea('description', $task->description ?? null, ['class' => 'rounded border-gray-300 w-1/3 h-32',
-                                                'cols' => 50,
-                                                'rows' => 10,
-                                                'id' => 'description'
-                                                ]) }}
+                                                                      'cols' => 50,
+                                                                      'rows' => 10,
+                                                                      'id' => 'description'
+                                                                      ]) }}
     </div>
     <div class="mt-2">
         {{ Form::label('status_id', __('views.task.form.status')) }}
