@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Label;
 use App\Models\Task;
 use App\Models\TaskStatus;
 use App\Models\User;
@@ -14,8 +15,8 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $statuses = TaskStatus::all()->sortBy('id');
-        $tasks = Task::paginate(15);
+        $statuses = TaskStatus::orderBy('id')->get();
+        $tasks = Task::orderBy('id')->paginate(15);
         return view('task.index', compact('tasks', 'statuses'));
     }
 
@@ -24,10 +25,11 @@ class TaskController extends Controller
      */
     public function create()
     {
-        $users = User::all();
-        $statuses = TaskStatus::all();
+        $users = User::orderBy('id')->get();
+        $statuses = TaskStatus::orderBy('id')->get();
+        $labels = Label::orderBy('id')->get();
         $task = new Task();
-        return view('task.create', compact('task', 'statuses', 'users'));
+        return view('task.create', compact('task', 'statuses', 'users', 'labels'));
     }
 
     /**
@@ -42,8 +44,10 @@ class TaskController extends Controller
             'created_by_id' => 'integer',
             'assigned_to_id' => 'nullable|integer'
         ]);
-        $request->user()->tasks()->create($data);
-        flash(__('views.task.create'))->success();
+        $labelsIds = $request->input('labels');
+        $task = $request->user()->tasks()->create($data);
+        $task->labels()->attach($labelsIds);
+        flash(__('messages.task.create'))->success();
         return redirect()->route('tasks.index');
     }
 
@@ -60,9 +64,10 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        $users = User::all();
-        $statuses = TaskStatus::all();
-        return view('task.edit', compact('task', 'users', 'statuses'));
+        $users = User::orderBy('id')->get();
+        $statuses = TaskStatus::orderBy('id')->get();
+        $labels = Label::orderBy('id')->get();
+        return view('task.edit', compact('task', 'users', 'statuses', 'labels'));
     }
 
     /**
@@ -77,9 +82,11 @@ class TaskController extends Controller
             'created_by_id' => 'integer',
             'assigned_to_id' => 'nullable|integer'
         ]);
+        $labelsIds = $request->input('labels');
         $task->fill($data);
+        $task->labels()->sync($labelsIds);
         $task->save();
-        flash(__('views.task.update'))->success();
+        flash(__('messages.task.update'))->success();
         return redirect()->route('tasks.index');
     }
 
@@ -89,7 +96,7 @@ class TaskController extends Controller
     public function destroy(Task $task)
     {
         $task->delete();
-        flash(__('views.task.delete'))->success();
+        flash(__('messages.task.delete'))->success();
         return redirect()->route('tasks.index');
     }
 }
