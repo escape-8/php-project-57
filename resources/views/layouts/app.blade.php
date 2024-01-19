@@ -61,7 +61,7 @@
                                 @lang('layouts.app.statuses')</a>
                         </li>
                         <li>
-                            <a href="https://php-task-manager-ru.hexlet.app/labels"
+                            <a href="{{ route('labels.index') }}"
                                class="block py-2 pl-3 pr-4 text-gray-700 hover:text-blue-700 lg:p-0">
                                 @lang('layouts.app.labels')</a>
                         </li>
