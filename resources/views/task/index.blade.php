@@ -8,64 +8,38 @@
                 <h1 class="mb-5">@lang('views.task.index.list')</h1>
                 <div class="w-full flex items-center">
                     <div>
-                        <form method="GET" action="https://php-task-manager-ru.hexlet.app/tasks" accept-charset="UTF-8"
-                              class="">
+                        {{ Form::open(['url' => route('tasks.index'), 'method' => 'GET']) }}
                             <div class="flex">
                                 <div>
-                                    <select class="rounded border-gray-300" name="filter[status_id]">
-                                        <option selected="selected" value="">@lang('views.task.index.status')</option>
-                                        @foreach($statuses as $status)
-                                            <option value="{{ $status->id }}">{{ $status->name }}</option>
-                                        @endforeach
-                                    </select>
+{{--                                    {{ dump($filter['status_id']) }}--}}
+                                    {{ Form::select('filter[status_id]',
+                                      [null => __('views.task.index.status')] + $statuses->pluck('name', 'id')->toArray(),
+                                      $filter['status_id'] ?? null,
+                                      ['class' => 'rounded border-gray-300']) }}
+                                    {{ Form::close() }}
                                 </div>
                                 <div>
-                                    <select class="ml-2 rounded border-gray-300" name="filter[created_by_id]">
-                                        <option selected="selected" value="">Автор</option>
-                                        <option value="1">Михеева Яков Фёдорович</option>
-                                        <option value="2">Силина Клементина Алексеевна</option>
-                                        <option value="3">Лаврентий Иванович Максимов</option>
-                                        <option value="4">Алиса Евгеньевна Воробьёваа</option>
-                                        <option value="5">Артемий Максимович Овчинникова</option>
-                                        <option value="6">Елизавета Максимовна Морозова</option>
-                                        <option value="7">Прохор Борисович Осипова</option>
-                                        <option value="8">Лихачёва Павел Владимирович</option>
-                                        <option value="9">Ореховаа Зоя Фёдоровна</option>
-                                        <option value="10">Нина Ивановна Логинова</option>
-                                        <option value="11">Кабанова Марк Евгеньевич</option>
-                                        <option value="12">Станислав Иванович Лыткина</option>
-                                        <option value="13">Уваров Ян Львович</option>
-                                        <option value="14">Никифоров Герасим Дмитриевич</option>
-                                        <option value="15">Валерий Александрович Панфилов</option>
-                                        <option value="16">e</option>
-                                    </select>
+                                    {{ Form::select('filter[created_by_id]',
+                                        [null => __('views.task.index.author')] + $users->pluck('name', 'id')->toArray(),
+                                        $filter['created_by_id'] ?? null,
+                                        ['class' => 'ml-2 rounded border-gray-300']
+                                        ) }}
+                                    {{ Form::close() }}
                                 </div>
                                 <div>
-                                    <select class="ml-2 rounded border-gray-300" name="filter[assigned_to_id]">
-                                        <option selected="selected" value="">Исполнитель</option>
-                                        <option value="1">Михеева Яков Фёдорович</option>
-                                        <option value="2">Силина Клементина Алексеевна</option>
-                                        <option value="3">Лаврентий Иванович Максимов</option>
-                                        <option value="4">Алиса Евгеньевна Воробьёваа</option>
-                                        <option value="5">Артемий Максимович Овчинникова</option>
-                                        <option value="6">Елизавета Максимовна Морозова</option>
-                                        <option value="7">Прохор Борисович Осипова</option>
-                                        <option value="8">Лихачёва Павел Владимирович</option>
-                                        <option value="9">Ореховаа Зоя Фёдоровна</option>
-                                        <option value="10">Нина Ивановна Логинова</option>
-                                        <option value="11">Кабанова Марк Евгеньевич</option>
-                                        <option value="12">Станислав Иванович Лыткина</option>
-                                        <option value="13">Уваров Ян Львович</option>
-                                        <option value="14">Никифоров Герасим Дмитриевич</option>
-                                        <option value="15">Валерий Александрович Панфилов</option>
-                                        <option value="16">e</option>
-                                    </select>
+                                    {{ Form::select('filter[assigned_to_id]',
+                                        [null => __('views.task.index.executor')] + $users->pluck('name', 'id')->toArray(),
+                                        $filter['assigned_to_id'] ?? null,
+                                        ['class' => 'ml-2 rounded border-gray-300']
+                                        ) }}
+                                    {{ Form::close() }}
                                 </div>
                                 <div>
-                                    <input class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2"
-                                           type="submit" value="@lang('views.task.index.apply')">
+                                    {{ Form::submit(__('views.task.index.apply'),
+                                       ['class' => 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2']
+                                       ) }}
                                 </div>
-
+                            {{ Form::close() }}
                             </div>
                         </form>
                     </div>
