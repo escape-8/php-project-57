@@ -11,5 +11,11 @@ return [
         'create' => 'Task created successfully',
         'update' => 'The task was successfully modified',
         'delete' => 'The task was successfully deleted'
+    ],
+    'label' => [
+        'create' => 'Label created successfully',
+        'update' => 'The label was successfully modified',
+        'delete' => 'The label was successfully deleted',
+        'error_delete' => 'Failed to delete label'
     ]
 ];

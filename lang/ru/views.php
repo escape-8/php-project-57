@@ -70,5 +70,32 @@ return [
             'description' => 'Описание: ',
             'labels' => 'Метки: '
         ]
+    ],
+    'label' => [
+        'index' => [
+            'list' => 'Метки',
+            'create_label' => 'Создать метку',
+            'id' => 'ID',
+            'name' => 'Имя',
+            'description' => 'Описание',
+            'created_at' => 'Дата создания',
+            'actions' => 'Действия',
+            'buttons' => [
+                'edit' => 'Изменить',
+                'delete' => 'Удалить'
+            ]
+        ],
+        'form' => [
+            'name' => 'Имя',
+            'description' => 'Описание'
+        ],
+        'create' => [
+            'list' => 'Создать метку',
+            'submit' => 'Создать'
+        ],
+        'edit' => [
+            'list' => 'Изменение метки',
+            'submit' => 'Обновить'
+        ]
     ]
 ];

@@ -70,5 +70,32 @@ return [
             'description' => 'Description: ',
             'labels' => 'Labels: '
         ]
+    ],
+    'label' => [
+        'index' => [
+            'list' => 'Labels',
+            'create_label' => 'Create label',
+            'id' => 'ID',
+            'name' => 'Name',
+            'description' => 'Description',
+            'created_at' => 'Created At',
+            'actions' => 'Actions',
+            'buttons' => [
+                'edit' => 'Edit',
+                'delete' => 'Delete'
+            ]
+        ],
+        'form' => [
+            'name' => 'Name',
+            'description' => 'Description'
+        ],
+        'create' => [
+            'list' => 'Create label',
+            'submit' => 'Create'
+        ],
+        'edit' => [
+            'list' => 'Edit label',
+            'submit' => 'Update'
+        ]
     ]
 ];
