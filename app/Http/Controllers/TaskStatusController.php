@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TaskStatusRequest;
 use App\Models\TaskStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Http\Request;
@@ -29,11 +30,9 @@ class TaskStatusController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(TaskStatusRequest $request)
     {
-        $data = $this->validate($request, [
-            'name' => 'required|unique:task_statuses,name'
-        ]);
+        $data = $request->validated();
 
         $taskStatus = new TaskStatus($data);
         $taskStatus->save();
@@ -61,12 +60,10 @@ class TaskStatusController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(TaskStatusRequest $request, string $id)
     {
         $status = TaskStatus::findORFail($id);
-        $data = $this->validate($request, [
-            'name' => 'required|unique:task_statuses,name,' . $status->id
-        ]);
+        $data = $request->validated();
         $status->fill($data);
         $status->save();
         flash(__('messages.task_status.update'))->success();
