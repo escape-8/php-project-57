@@ -2,6 +2,7 @@
 
 return [
     'delete_confirm' => 'Вы уверены?',
+    'validation_error_title' => 'Упс! Что-то пошло не так:',
     'task_statuses' => [
         'index' => [
             'list' => 'Статусы',

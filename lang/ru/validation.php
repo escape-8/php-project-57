@@ -173,6 +173,12 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'password' => [
+            'confirmed' => ':attribute и подтверждение не совпадают',
+            'min' => [
+                'string' => ':attribute должен иметь длину не менее :min символов'
+            ]
+        ]
     ],
 
     /*
@@ -186,5 +192,7 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'password' => 'Пароль'
+    ],
 ];
