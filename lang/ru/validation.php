@@ -115,7 +115,7 @@ return [
     'not_in' => 'Выбранный :attribute недействителен.',
     'not_regex' => 'Формат поля :attribute недействителен.',
     'numeric' => 'Поле :attribute должно быть числом.',
-    'пароль' => [
+    'password' => [
         'letters' => 'Поле :attribute должно содержать хотя бы одну букву.',
         'mixed' => 'Поле :attribute должно содержать хотя бы одну прописную и одну строчную букву.',
         'numbers' => 'Поле :attribute должно содержать хотя бы одно число.',
@@ -142,7 +142,7 @@ return [
     'required_without' => 'Поле :attribute является обязательным, если :values отсутствует.',
     'required_without_all' => 'Поле :attribute является обязательным, если ни одно из :values не присутствует.',
     'same' => 'Поле :attribute должно соответствовать :other.',
-    'размер' => [
+    'size' => [
         'array' => 'Поле :attribute должно содержать элементы :size.',
         'file' => 'Поле :attribute должно быть равно :size в килобайтах.',
         'numeric' => 'Поле :attribute должно быть :size.',
