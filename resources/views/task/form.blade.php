@@ -1,19 +1,14 @@
-@if ($errors->any())
-    <div>
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-
     <div>
         {{ Form::label('name', __('views.task.form.name')) }}
     </div>
     <div class="mt-2">
         {{ Form::text('name', $task->name ?? null, ['class' => 'rounded border-gray-300 w-1/3', 'id' => 'name']) }}
     </div>
+    @if ($errors->get('name'))
+        @foreach ($errors->get('name') as $error)
+            <div class="text-rose-600">{{ $error }}</div>
+        @endforeach
+    @endif
     <div class="mt-2">
         {{ Form::label('description', __('views.task.form.description')) }}
     </div>
@@ -32,6 +27,11 @@
                         $task->status_id ?? '',
                         ['class' => 'rounded border-gray-300 w-1/3', 'id' => 'status_id']) }}
     </div>
+    @if ($errors->get('status_id'))
+        @foreach ($errors->get('status_id') as $error)
+            <div class="text-rose-600">{{ $error }}</div>
+        @endforeach
+    @endif
     <div class="mt-2">
         {{ Form::label('assigned_to_id', __('views.task.form.executor')) }}
     </div>
