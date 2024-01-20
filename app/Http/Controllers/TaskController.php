@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TaskRequest;
 use App\Models\Label;
 use App\Models\Task;
 use App\Models\TaskStatus;
@@ -44,15 +45,9 @@ class TaskController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(TaskRequest $request)
     {
-        $data = $this->validate($request, [
-            'name' => 'required|min:1',
-            'status_id' => 'required|integer',
-            'description' => 'nullable|string',
-            'created_by_id' => 'integer',
-            'assigned_to_id' => 'nullable|integer'
-        ]);
+        $data = $request->validated();
         $labelsIds = $request->input('labels');
         $task = $request->user()->tasks()->create($data);
         $task->labels()->attach($labelsIds);
@@ -82,15 +77,9 @@ class TaskController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Task $task)
+    public function update(TaskRequest $request, Task $task)
     {
-        $data = $this->validate($request, [
-            'name' => 'required|min:1',
-            'status_id' => 'required|integer',
-            'description' => 'nullable|string',
-            'created_by_id' => 'integer',
-            'assigned_to_id' => 'nullable|integer'
-        ]);
+        $data = $request->validated();
         $labelsIds = $request->input('labels');
         $task->fill($data);
         $task->labels()->sync($labelsIds);
