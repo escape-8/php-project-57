@@ -76,7 +76,7 @@ class TaskStatusController extends Controller
     public function destroy(string $id)
     {
         $status = TaskStatus::findOrFail($id);
-        if ($status->tasks->isNotEmpty()) {
+        if ($status->tasks()->get()->isNotEmpty()) {
             flash(__('messages.task_status.error_delete'))->error();
             return redirect()->route('task_statuses.index');
         }

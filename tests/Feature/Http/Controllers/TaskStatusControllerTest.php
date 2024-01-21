@@ -3,7 +3,7 @@
 namespace Tests\Feature\Http\Controllers;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use tests\TestCase;
+use Tests\TestCase;
 use App\Models\TaskStatus;
 use App\Models\User;
 
