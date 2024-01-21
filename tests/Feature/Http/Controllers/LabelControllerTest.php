@@ -11,6 +11,7 @@ use Tests\TestCase;
 class LabelControllerTest extends TestCase
 {
     use RefreshDatabase;
+
     private User $user;
 
     public function setUp(): void

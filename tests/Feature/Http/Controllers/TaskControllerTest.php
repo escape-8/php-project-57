@@ -12,6 +12,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class TaskControllerTest extends TestCase
 {
     use RefreshDatabase;
+
     private User $user;
     private TaskStatus $status;
     private Task $task;
